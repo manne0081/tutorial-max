@@ -1,0 +1,36 @@
+<h3>String Interpolation</h3>
+{{ aString }} <br>
+{{ aNumber }} <br>
+{{ isBool }} <br>
+<hr>
+
+<h3>Property Binding</h3>
+<p [innerText]="aString"></p>
+<div>
+  <input type="text" value="{{aNumber}}">
+  <input type="text" [value]="aNumber">
+</div>
+<div [ngClass]="{'red-border': attachClass}" [ngStyle]="{'background-color': 'darkseagreen'}">
+  Text
+</div>
+<br>
+<app-property-binding [nameI]="'Manu'" [nameII]="'Manne'"></app-property-binding>
+<hr>
+
+<h3>Event-Binding</h3>
+<button (click)="attachClass = false">klasse entfernen</button>
+<button (click)="attachClass = true">klasse ergänzen</button>
+<button (click)="onClick($event)">console.log und alert</button>
+<br><br>
+<div *ngIf="attachClass; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>AttachClass is true.</ng-template>
+<ng-template #elseBlock>AttachClass is false.</ng-template>
+<br>
+<app-event-binding (clicked)="aString = $event"></app-event-binding>
+<hr>
+
+<h3>Two-Way-Binding</h3>
+<input type="text" [value]="aString" (keyup)="aString = input.value" #input>
+<input type="text" [(ngModel)]="aString">
+<hr>
+<app-next-other> <p #paragraph>Irgendein Text</p> </app-next-other>
